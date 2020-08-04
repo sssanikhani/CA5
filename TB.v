@@ -7,7 +7,7 @@ module TB();
     wire Hit;
     wire [31:0] cacheData;
 
-    Cache C(rst, address, MMToCache[0], MMToCache[1], MMToCache[2], MMToCache[3], MMAddress, data, Hit);
+    Cache C(rst, address, MMToCache[0], MMToCache[1], MMToCache[2], MMToCache[3], MMAddress, cacheData, Hit);
     MainMemory M(rst, MMAddress, MMToCache[0], MMToCache[1], MMToCache[2], MMToCache[3]);
     
     initial begin
@@ -15,6 +15,7 @@ module TB();
         repeat (8191) begin
             #20 address = address + 1; 
         end
+        #50;
     end
 
 endmodule
