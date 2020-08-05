@@ -35,9 +35,9 @@ module Cache(input clk, rst, input [14:0] address,
         end
         else if (clk) begin
             if(~Hit) begin
+                #2
                 Tag[address[11:2]] = address[14:12];
                 Valid[address[11:2]] = 1;
-                #2
                 main [address[11:2]][0] = MMToCache0;
                 main [address[11:2]][1] = MMToCache1;
                 main [address[11:2]][2] = MMToCache2;
